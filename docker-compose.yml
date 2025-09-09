@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: professy
+    volumes:
+      - mongo-data:/data/db
+
+  app:
+    build: .
+    container_name: scraper-app
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://mongo:27017/professy
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      GOOGLE_CX: ${GOOGLE_CX}
+    depends_on:
+      - mongo
+    command: npm run start:prod
+
+volumes:
+  mongo-data:

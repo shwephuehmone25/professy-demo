@@ -6,13 +6,13 @@ export class ScraperController {
   constructor(private readonly scraperService: ScraperService) {}
 
   // GET /scraper/google?keyword=hiking
-  @Get('google')
+  @Get('search-google')
   async scrapeGoogle(@Query('keyword') keyword = 'hiking') {
     return this.scraperService.scrapeGoogle(keyword);
   }
 
   // GET /scraper/search?keyword=hiking
-  @Get('/search')
+  @Get('/search-browser')
   async searchByKeyword(@Query('keyword') keyword = 'hiking') {
     return this.scraperService.searchByKeyword(keyword);
   }

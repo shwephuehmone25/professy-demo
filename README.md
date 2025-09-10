@@ -62,10 +62,11 @@ docker run -d google-search-scraper
 ## Live demo
 For a complete list of search results, please visit the following:
 ```
-http://172.16.129.67:3000/scraper/all
+https://fa99abe70155.ngrok-free.app/scraper/all
 ```
 
 To test the search using a keyword, please visit:
 ```
-http://172.16.129.67:3000/scraper/google?keyword=hiking
+https://fa99abe70155.ngrok-free.app/scraper/search-google?keyword=hiking
+https://fa99abe70155.ngrok-free.app/scraper/search-browse?keyword=hiking
 ```

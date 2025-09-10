@@ -1,5 +1,9 @@
 version: '3.9'
 
+networks:
+  scraper-net:
+    driver: bridge
+
 services:
   mongo:
     image: mongo:6
@@ -11,6 +15,8 @@ services:
       MONGO_INITDB_DATABASE: professy
     volumes:
       - mongo-data:/data/db
+    networks:
+      - scraper-net
 
   app:
     build: .
@@ -25,6 +31,8 @@ services:
       GOOGLE_CX: ${GOOGLE_CX}
     depends_on:
       - mongo
+    networks:
+      - scraper-net
     command: npm run start:prod
 
 volumes:

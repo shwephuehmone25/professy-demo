@@ -11,6 +11,12 @@ export class ScraperController {
     return this.scraperService.scrapeGoogle(keyword);
   }
 
+  // GET /scraper/search?keyword=hiking
+  @Get('/search')
+  async searchByKeyword(@Query('keyword') keyword = 'hiking') {
+    return this.scraperService.searchByKeyword(keyword);
+  }
+
   // GET /scraper/all
   @Get('all')
   async getAll() {
